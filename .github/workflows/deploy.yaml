@@ -10,7 +10,7 @@ on:
 env:
   HELM_EXPERIMENTAL_OCI: 1 #enable OCI support
   HELM_VERSION_TO_INSTALL: 3.5.0 # version of HEL to install
-  GCR_IMAGE: ghcr.io/${{ github.repository_owner }}/helm-demo
+  GCR_IMAGE: ghcr.io/${{ github.repository_owner }}/demo
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
 
       - name: save helm chart to local registry
         run: |
-          helm chart save ${{ github.workspace }}/src/helm-demo/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm chart save ${{ github.workspace }}/src/demo/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
 
       - name: publish chart to acr
         run: |
